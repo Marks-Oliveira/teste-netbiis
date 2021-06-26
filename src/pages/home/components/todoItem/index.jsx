@@ -1,10 +1,11 @@
 import React from 'react';
 
+import * as S from './styles';
 
 export default function Todo({ id, description, done }) {
 
     return (
-        <div >
+        <S.Wrapper value={id}>
             <div >
                 <div>{id} - {description}</div>
                 <div >Feito? {done === true ? 'Sim' : 'Não'}</div>
@@ -12,6 +13,6 @@ export default function Todo({ id, description, done }) {
             <div >
                 <button type="button" >Ok</button>
             </div>
-        </div>
+        </S.Wrapper>
     )
 }
