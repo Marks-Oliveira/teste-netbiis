@@ -13,6 +13,12 @@ export default function reducer(state, action) {
     }
 
     const updateTodo = (todo) => {
+        for (let item of state) {
+            if (item.id === todo.id) {
+                item.done = true;
+            }
+        }
+
         return state;
     };
 
