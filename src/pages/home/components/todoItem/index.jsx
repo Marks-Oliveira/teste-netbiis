@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
+import { TodoContext } from '../../../../contexts/todo.context';
 
 import * as S from './styles';
 
 export default function Todo({ id, description, done }) {
+    const todoContext = useContext(TodoContext);
+    const [todo, setTodo] = useState({ id: id, description: description, done: done });
+
+    const handleUpdateTodo = () => {
+        setTodo({id: id, description: description, done: !done})
+        todoContext.dispatch({ type: 'update', payload: todo});
+    }
 
     return (
-        <S.Wrapper value={id}>
+        <S.Wrapper value={todo.id}>
             <div >
-                <div>{id} - {description}</div>
-                <div >Feito? {done === true ? 'Sim' : 'Não'}</div>
+                <div>{todo.id} - {todo.description}</div>
+                <div >Feito? {todo.done === true ? 'Sim' : 'Não'}</div>
             </div>
             <div >
-                <button type="button" >Ok</button>
+                <button type="button" onClick={handleUpdateTodo}>Ok</button>
             </div>
         </S.Wrapper>
     )
