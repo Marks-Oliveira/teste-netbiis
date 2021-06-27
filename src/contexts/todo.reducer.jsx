@@ -1,7 +1,14 @@
 export default function reducer(state, action) {
 
+    const generateId = () => {
+        let id = Math.floor(new Date().valueOf() * Math.random());        
+
+        return id;
+    }
+
     const addTodo = (todo) => {
-        let todoItem = { id: state.length + 1, description: todo, done: false };
+        let todoItem = { id: generateId(), description: todo, done: false };
+
         return [...state, todoItem];
     }
 
