@@ -18,9 +18,9 @@ export default function Todo({ id, description, done }) {
                 <div>{todo.id} - {todo.description}</div>
                 <S.ItemDone value={todo.done} >Feito? <span>{todo.done === true ? 'Sim' : 'Não'}</span></S.ItemDone>
             </div>
-            <div >
+            <S.OkButton value={todo.done}>
                 <button type="button" onClick={handleUpdateTodo}>Ok</button>
-            </div>
+            </S.OkButton>
         </S.Wrapper>
     )
 }
