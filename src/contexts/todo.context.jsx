@@ -14,7 +14,14 @@ export default function TodoProvider(props) {
         return items;
     }, [data]);
 
-    const [todos, dispatch] = useReducer(TodoReducer, list());
+    const listTodos = useCallback(() => {
+        let items = JSON.parse(window.sessionStorage.getItem("todos"))
+        if (!items) return [];
+
+        return items;
+    }, []);
+
+    const [todos, dispatch] = useReducer(TodoReducer, listTodos());
     return (
         <TodoContext.Provider value={{ todos, dispatch }}>
             {props.children}
