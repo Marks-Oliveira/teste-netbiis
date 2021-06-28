@@ -8,8 +8,12 @@ export default function reducer(state, action) {
 
     const addTodo = (todo) => {
         let todoItem = { id: generateId(), description: todo, done: false };
+        let arrTodos = [...state, todoItem];
 
-        return [...state, todoItem];
+        window.sessionStorage.setItem("todos", JSON.stringify(arrTodos));
+        state = arrTodos;
+        
+        return state;
     }
 
     const updateTodo = (todo) => {
@@ -18,7 +22,8 @@ export default function reducer(state, action) {
                 item.done = true;
             }
         }
-
+        
+        window.sessionStorage.setItem("todos", JSON.stringify(state));
         return state;
     };
 
@@ -26,6 +31,7 @@ export default function reducer(state, action) {
         let newState = state.filter((item) => item.id !== todo.id);
         state = newState;
         
+        window.sessionStorage.setItem("todos", JSON.stringify(state));
         return state;
     }
 
