@@ -12,6 +12,11 @@ export default function Todo({ id, description, done }) {
         todoContext.dispatch({ type: 'update', payload: todo});
     }
 
+    const handleDeleteTodo = () => {
+        setTodo({id: id, description: description, done: done})
+        todoContext.dispatch({ type: 'remove', payload: todo});
+    }
+
     return (
         <S.Wrapper value={todo.id}>
             <div >
@@ -20,6 +25,7 @@ export default function Todo({ id, description, done }) {
             </div>
             <S.OkButton value={todo.done}>
                 <button type="button" onClick={handleUpdateTodo}>Ok</button>
+                <button type="button" onClick={handleDeleteTodo}>Excluir</button>
             </S.OkButton>
         </S.Wrapper>
     )
