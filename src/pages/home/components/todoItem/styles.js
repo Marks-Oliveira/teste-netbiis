@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.main`
+export const Wrapper = styled.article`
     background: ${props => props.value % 2 !== 0 ? '#e2e2e2' : '#fff'};
     margin-bottom: 1rem;
     cursor: pointer;
