@@ -16,7 +16,7 @@ export default function Todo({ id, description, done }) {
         <S.Wrapper value={todo.id}>
             <div >
                 <div>{todo.id} - {todo.description}</div>
-                <div >Feito? {todo.done === true ? 'Sim' : 'Não'}</div>
+                <S.ItemDone value={todo.done} >Feito? <span>{todo.done === true ? 'Sim' : 'Não'}</span></S.ItemDone>
             </div>
             <div >
                 <button type="button" onClick={handleUpdateTodo}>Ok</button>
