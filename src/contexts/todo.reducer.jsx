@@ -23,6 +23,9 @@ export default function reducer(state, action) {
     };
 
     const deleteTodo = (todo) => {
+        let newState = state.filter((item) => item.id !== todo.id);
+        state = newState;
+        
         return state;
     }
 
